@@ -10,6 +10,7 @@ export const unpkgPathPlugin = () => {
       });
 
       //Handle relative paths in a module
+
       build.onResolve({ filter: /^\.+\// }, async (args: any) => {
         return {
           namespace: 'a',
