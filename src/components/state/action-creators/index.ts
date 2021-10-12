@@ -1,12 +1,17 @@
+// { Dispatch } это тип функции диспача
+import { Dispatch } from 'redux';
+
 import { ActionType } from '../action-types';
 import {
-  Action,
   UpdateCellAction,
   DeleteCellAction,
   MoveCellAction,
   InsertCellAfterAction,
   Direction,
+  Action,
 } from '../actions';
+
+import bundle from '../../../bundler';
 
 import { CellTypes } from '../cell';
 
@@ -44,5 +49,26 @@ export const insertCellAfter = (
   return {
     type: ActionType.INSERT_CELL_AFTER,
     payload: { id, type: cellType },
+  };
+};
+
+export const createBundle = (cellId: string, input: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.BUNDLE_START,
+      payload: {
+        cellId,
+      },
+    });
+    const result = await bundle(input);
+    //console.log('dfsdf', result);
+
+    dispatch({
+      type: ActionType.BUNDLE_COMPLETE,
+      payload: {
+        cellId,
+        bundle: result,
+      },
+    });
   };
 };

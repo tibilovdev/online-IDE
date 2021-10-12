@@ -5,8 +5,8 @@ import reducers from './reducers';
 //import { ActionType } from './action-types';
 
 export const store = createStore(reducers, {}, applyMiddleware(thunk));
-const state = store.getState();
-let a = state.cells.data;
+//const state = store.getState();
+//let a = state.cells.data;
 store.dispatch({
   type: ActionType.INSERT_CELL_AFTER,
   payload: {

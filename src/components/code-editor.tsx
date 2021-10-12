@@ -38,7 +38,7 @@ const CodeEditor: React.FC<CodEditorProps> = ({ onChange, initialValue }) => {
   };
 
   const onFormatClick = () => {
-    console.log(editorRef.current);
+    //console.log('dsfsdfsd', editorRef.current);
 
     //получить текущее значение(прописаный код в редакторе) из editor
     const unformatted = editorRef.current.getModel().getValue();
